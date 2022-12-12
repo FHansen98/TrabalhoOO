@@ -4,12 +4,12 @@ public class Programa {
 	private String data;
 	private String horario;
 	private boolean onAir;
-	private String[] descricao;
-	private String[] genero;
+	private String descricao;
+	private String genero;
 	private int classificacaoIndicativa;
 	private boolean lembrete;
 	private boolean gravado;
-	public Programa(String nome, String data, String horario, boolean onAir, String[] descricao, String[] genero,
+	public Programa(String nome, String data, String horario, boolean onAir, String descricao, String genero,
 			int classificacaoIndicativa, boolean lembrete, boolean gravado) {
 		super();
 		this.nome = nome;
@@ -22,6 +22,14 @@ public class Programa {
 		this.lembrete = lembrete;
 		this.gravado = gravado;
 	}
+	
+	@Override
+	public String toString() {
+		return "Programa nome=" + nome + ", data=" + data + ", horario=" + horario + ", onAir=" + onAir
+				+ ", descricao=" + descricao + ", genero=" + genero + ", classificacaoIndicativa="
+				+ classificacaoIndicativa + ", lembrete=" + lembrete + ", gravado=" + gravado;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -46,16 +54,16 @@ public class Programa {
 	public void setOnAir(boolean onAir) {
 		this.onAir = onAir;
 	}
-	public String[] getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String[] descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String[] getGenero() {
+	public String getGenero() {
 		return genero;
 	}
-	public void setGenero(String[] genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	public int getClassificacaoIndicativa() {
