@@ -9,7 +9,7 @@ import javax.swing.event.*;
 import controle.*;
 
 public class TelaCrudPrograma implements ActionListener {
-	private ControleDados d = new ControleDados();
+	private ControleDados d;
 	private JFrame janela = new JFrame("Programação televisão");
 	private JLabel titulo = new JLabel("Adicionar Programa");
 	private JTextField nome , numero;

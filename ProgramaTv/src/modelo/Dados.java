@@ -14,14 +14,20 @@ public class Dados {
 	
 	public void cadastrosProntos () {
 		
-		Programa filme =  new Programa("Harry Potter", "11/12/2022", "22:00", "Bruxos e contra viloes");
+		Programa filme =  new Programa("Harry Potter", "11/12/2022", "22:00", "bruxos contra viloes");
 		Programa novela =  new Programa("Avenida Brasil", "11/12/2022", "21:00", "Carminha x Nina");
 		Programa bbb =  new Programa("BBB", "11/12/2022", "22:00", "reality");
 		Programa got =  new Programa("Game of Thrones", "11/12/2022", "23:00", "dragoes e Casas");
 		Programa filme2 =  new Programa("Senhor dos Aneis", "11/12/2022", "20:00", "filme ficçao cientifica");
 		Programa globonews =  new Programa("Globo News", "11/12/2022", "21:00", "noticias de hoje");
+		Programa padrinhosMagicos =  new Programa("padrinhosMagicos", "26/12/2022", "19:00", "timmy perde seus padrinhos");
+		Programa ben =  new Programa("Ben 10", "12/12/2022", "22:00", "ben 10 vs vilgaguis");
+		Programa cloneWars =  new Programa("Clone Wars", "16/12/2022", "23:00", "A volta do Darth Maul");
 		Canal globo = new Canal("Globo", 10, new ArrayList<>());
 		Canal telecine = new Canal("Telecine", 223, new ArrayList<>());
+		Canal cartoom = new Canal("Cartoom", 46, new ArrayList<>());
+		Canal nick = new Canal("Nick", 44, new ArrayList<>());
+		Canal disney = new Canal("Disney", 67, new ArrayList<>());
 		UsuarioPremium premium1 = new UsuarioPremium(new ArrayList<>(), "Jose", "a", 0005, "1", new ArrayList<>(), new ArrayList<>());
 		UsuarioPremium premium2 = new UsuarioPremium(new ArrayList<>(), "Athur", "bbbb@gmail.com", 0002, "12345", new ArrayList<>(), new ArrayList<>());
 		UsuarioPremium premium3 = new UsuarioPremium(new ArrayList<>(), "Professora", "cccc@gmail.com", 0003, "12345", new ArrayList<>(), new ArrayList<>());
@@ -29,10 +35,19 @@ public class Dados {
 		UsuarioMaster master = new UsuarioMaster(true, new ArrayList<>(), new ArrayList<>(), "b", 5, "2", new ArrayList<>(), new ArrayList<>());
 		canais.add(globo);
 		canais.add(telecine);
+		canais.add(nick);
+		canais.add(cartoom);
+		canais.add(disney);
+		
 		programas.add(filme);
 		programas.add(novela);
 		programas.add(filme2);
 		programas.add(globonews);
+		
+		programas.add(padrinhosMagicos );
+		programas.add(ben);
+		programas.add(cloneWars);
+		
 		listaUsuarioP.add(premium1);
 		listaUsuarioP.add(premium2);
 		listaUsuarioP.add(premium3);
@@ -44,6 +59,10 @@ public class Dados {
 		globo.getListaProgramas().add(globonews);
 		globo.getListaProgramas().add(novela);
 		globo.getListaProgramas().add(bbb);
+		
+		nick.getListaProgramas().add(padrinhosMagicos);
+		cartoom.getListaProgramas().add(ben);
+		disney.getListaProgramas().add(cloneWars);
 		telecine.getListaProgramas().add(filme2);
 		telecine.getListaProgramas().add(filme);
 		telecine.getListaProgramas().add(got);
@@ -61,23 +80,23 @@ public class Dados {
 //		System.out.println(globo);
 //		System.out.println(telecine);
 //		System.out.println(premium1);
-		System.out.println("Rodou o Codigo");
+//		System.out.println(master);
 		this.master = master;
 	
 	}
 	
 	public void cadastrarCanal(Canal canal, int posicao, Dados d) {
 		if(posicao < 0) {
-//			System.out.println("entrou");
+			System.out.println("entrou");
 			this.canais.add(canal);
 			this.master.getListaCanal().add(canal);
-//			System.out.println(this.master);
-//			System.out.println(this.canais);
+			System.out.println(this.master);
+			System.out.println(this.canais);
 		}else {
 			this.canais.set(posicao, canal);
 			this.master.getListaCanal().set(posicao,canal);
-//			System.out.println(this.master);
-//			System.out.println(this.canais);
+			System.out.println(this.master);
+			System.out.println(this.canais);
 		}
 	}
 
