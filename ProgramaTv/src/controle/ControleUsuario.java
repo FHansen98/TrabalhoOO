@@ -27,18 +27,18 @@ public class ControleUsuario {
 				return usuario.getId();
 		return -1;
 	}
-	public String[] getListaCanaisFavoritos(int id) {
-		String[] programasFavoritos = {};
-		for(var usuario:listaUsuarioP) {
-			if(usuario.getId() == id) {
-				programasFavoritos = new String[usuario.getListaCanaisFavoritos().size()];
-				for(int i = 0; i<usuario.getListaCanaisFavoritos().size(); i++) {
-					programasFavoritos[i] = ("  "+usuario.getListaCanaisFavoritos().get(i).getNome());
-				}
-				return programasFavoritos;
-			}
-		}
-		return programasFavoritos;
-	}
+//	public String[] getListaCanaisFavoritos(int id) {
+//		String[] programasFavoritos = {};
+//		for(var usuario:listaUsuarioP) {
+//			if(usuario.getId() == id) {
+//				programasFavoritos = new String[usuario.getListaCanaisFavoritos().size()];
+//				for(int i = 0; i<usuario.getListaCanaisFavoritos().size(); i++) {
+//					programasFavoritos[i] = (""+usuario.getListaCanaisFavoritos().get(i).getNome());
+//				}
+//				return programasFavoritos;
+//			}
+//		}
+//		return programasFavoritos;
+//	}
 	
 }

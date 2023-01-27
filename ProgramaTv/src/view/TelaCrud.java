@@ -34,7 +34,7 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 		listaCanais.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listaCanais.setVisibleRowCount(10);
 		listaCanais.setFont(new Font("Calibri Light", Font.PLAIN, 20));
-		listaProgramas = new JList<String>(new ControleCanais(d).getAllListaProgramas());
+		listaProgramas = new JList<String>(new ControleProgramas(d).getAllListaProgramas());
 		listaProgramas.setBounds(270, 65, 190, 370);
 		listaProgramas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listaProgramas.setVisibleRowCount(10);

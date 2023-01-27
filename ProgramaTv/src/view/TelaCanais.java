@@ -27,7 +27,7 @@ public class TelaCanais implements ActionListener, ListSelectionListener{
 		if (pagina == "favoritos") {
 			this.nextPage = "favoritos";
 			janela.add(favoritos);
-			listaCanais = new JList<String>(new ControleUsuario(d).getListaCanaisFavoritos(id));
+			listaCanais = new JList<String>(new ControleCanais(d).getListaCanaisFavoritos(id));
 		}else{			
 			this.nextPage = "canais";
 			listaCanais = new JList<String>(new ControleCanais(d).getListaCanais());

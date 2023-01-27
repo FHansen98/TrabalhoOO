@@ -17,7 +17,7 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 	private JButton voltar = new JButton("Voltar");
 	private JButton menu = new JButton("Menu");
 	private JButton busca = new JButton("Buscar"); // botão
-	JTextField buscaprograma;
+	private JTextField buscaprograma;
 	private JList<String> listaProgramas;
 	private int p;
 	private String page;
@@ -32,11 +32,11 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 		buscaprograma = new JTextField(null);
 		
 		if(pagina == "canais") {
-			listaProgramas = new JList<String>(new ControleCanais(d).getNomeListaProgramas(p));
+			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramas(p));
 			janela.add(voltar);
 			janela.add(descricao);
 		}else if(pagina == "favoritos"){
-			listaProgramas = new JList<String>(new ControleCanais(d).getNomeListaProgramas(p));
+			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramasFavoritos(id, p));
 			janela.add(voltar);
 		}else {
 			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramasOnAir());
@@ -81,7 +81,6 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		ControleCanais controleC = new ControleCanais(dados);
 		ControleProgramas controleP = new ControleProgramas(dados);
 		Object src = e.getSource();
 		String valorbuscaprograma = buscaprograma.getText();
@@ -97,7 +96,7 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 			int[] tam = new int[3];
 			tam = controleP.getBuscaPrograma(valorbuscaprograma);
 			if(tam[0]>=0) {
-				new TelaDetalhes(id, dados, controleC.getListaProgramas(tam[0]), tam[1]);
+				new TelaDetalhes(id, dados, controleP.getListaProgramas(tam[0]), tam[1]);
 				janela.dispose();
 			}
 			
@@ -113,17 +112,16 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 	
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
-		ControleCanais controleC = new ControleCanais(dados);
 		ControleProgramas controleP = new ControleProgramas(dados);
 		if(e.getValueIsAdjusting() && src == listaProgramas) {
 			if(page == "canais") {
-				new TelaDetalhes(id, dados, controleC.getListaProgramas(p), listaProgramas.getSelectedIndex());
+				new TelaDetalhes(id, dados, controleP.getListaProgramas(p), listaProgramas.getSelectedIndex());
 				janela.dispose();				
 			}else if(page == "onAir") {
 				new TelaDetalhes(id, dados, controleP.getListaProgramasOnAir(), listaProgramas.getSelectedIndex());
 				janela.dispose();	
 			}else if(page == "favoritos") {
-				new TelaDetalhes(id, dados, controleC.getListaProgramas(p), listaProgramas.getSelectedIndex());
+				new TelaDetalhes(id, dados, controleP.getNomeListaProgramasFavoritos(id, p), listaProgramas.getSelectedIndex());
 				janela.dispose();
 			}
 			
