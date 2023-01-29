@@ -1,4 +1,4 @@
-package modelo;
+package model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,16 +104,11 @@ public class Dados {
 	
 	public void cadastrarCanal(Canal canal, int posicao, Dados d) {
 		if(posicao < 0) {
-			System.out.println("entrou");
 			this.canais.add(canal);
 			this.master.getListaCanal().add(canal);
-			System.out.println(this.master);
-			System.out.println(this.canais);
 		}else {
 			this.canais.set(posicao, canal);
 			this.master.getListaCanal().set(posicao,canal);
-			System.out.println(this.master);
-			System.out.println(this.canais);
 		}
 	}
 

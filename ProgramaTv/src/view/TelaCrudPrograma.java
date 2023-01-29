@@ -5,71 +5,171 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-
-import controle.*;
+import control.*;
 
 public class TelaCrudPrograma implements ActionListener {
-	private ControleDados d;
-	private JFrame janela = new JFrame("Programação televisão");
-	private JLabel titulo = new JLabel("Adicionar Programa");
-	private JTextField nome , numero;
-	private JLabel  nomeLabel , numeroLabel;
+	private JFrame janela = new JFrame("CRUD");
+	private JLabel tituloCanais = new JLabel("Canais");
+	private JTextField nomePrograma;
+	private JLabel nomeProgramalabel = new JLabel("Nome do Programa");
+	private JTextField dataPrograma;
+	private JLabel dataProgramalabel = new JLabel("Data do Programa");
+	private JTextField horarioPrograma;
+	private JLabel horarioProgramalabel = new JLabel("Horario do Programa");
+	private JTextField descricaoPrograma;
+	private JLabel descricaoProgramalabel = new JLabel("Descrição do Programa");
+	private JButton voltar = new JButton("Voltar");
+	private JButton addPrograma = new JButton("Add");
 	private JButton salvar = new JButton("Salvar");
 	private JButton excluir = new JButton("Excluir");
-	private JButton add = new JButton("Add");
-	private JButton menu = new JButton("Menu");
+	private JList<String> listaCanais;
 	private int p;
 	
+	private static ControleDados dados;
+	
 	public TelaCrudPrograma (ControleDados d, int posicao) {
-		this.p=posicao;
-		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setBounds(130, 10, 270, 30);
+		p=posicao;
+		dados=d;
+//		(posição do eixo x, posição no eixo y, tamanho do bloco na posição x, tamanho do bloco no eixo y)
+		tituloCanais.setFont(new Font("Arial", Font.BOLD, 20));
+		tituloCanais.setBounds(40, 20, 150, 30);
+		
+	
+	
+		listaCanais = new JList<String>(new ControleCanais(d).getListaCanais());
+		
 		janela.setLayout(null);
-		janela.setSize(500, 400);
+//		 define o tamanho da janela 
+		janela.setSize(500, 600);
 		// fecha o programa quando o usuario fecha o programa
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
-		if(posicao == -1) {
-			nome = new JTextField(null);
-			numero = new JTextField(null);
-			add.setBounds(150, 160, 200, 30);
-			janela.add(add);
-		}else {
-			nome = new JTextField("canal");//new ControleCanais(d).getListaCanais().get(posicao)
-			numero = new JTextField("numero");
-			salvar.setBounds(170, 160, 90, 30);
-			janela.add(salvar);
-			excluir.setBounds(260, 160, 90, 30);
-			janela.add(excluir);
+		if(posicao==-1) {
+			nomePrograma = new JTextField(null);
+			dataPrograma = new JTextField(null);
+			horarioPrograma = new JTextField(null);
+			descricaoPrograma = new JTextField(null);
+			addPrograma.setBounds(270, 450, 100, 30);
+			janela.add(addPrograma);
+			janela.add(tituloCanais);
+			voltar.setBounds(150, 520, 200, 30);
 		}
-		menu.setBounds(150, 200, 200, 30);
-		janela.add(menu);
+		else {
+			nomePrograma = new JTextField(new ControleProgramas(d).getAllListaProgramas()[posicao]);
+			dataPrograma = new JTextField(new ControleProgramas(d).getAllInfosListaProgramas().get(posicao).getData());
+			horarioPrograma = new JTextField(new ControleProgramas(d).getAllInfosListaProgramas().get(posicao).getHorario());//
+			descricaoPrograma = new JTextField(new ControleProgramas(d).getAllInfosListaProgramas().get(posicao).getDescricao());
+			salvar.setBounds(100, 500, 90, 30);
+			janela.add(salvar);
+			excluir.setBounds(210, 500, 90, 30);
+			voltar.setBounds(320, 500, 90, 30);
+			janela.add(excluir);
+			
+			
+		}
+		listaCanais.setBounds(40, 65, 190, 370);
+		listaCanais.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		listaCanais.setVisibleRowCount(10);
+		listaCanais.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		janela.add(listaCanais);
+		janela.add(nomePrograma);
+		nomePrograma.setBounds(260 , 110 , 140 , 30);
 		
-		nomeLabel = new JLabel(" Nome :");
-		numeroLabel = new JLabel(" Número : ");
+		janela.add(dataPrograma);
+		dataPrograma.setBounds(260 , 175 , 140 , 30);
 		
-		janela.add(titulo);
-		janela.add(nomeLabel);
-		janela.add(nome);
-		janela.add(numeroLabel);
-		janela.add(numero);
-		nomeLabel.setBounds(100 , 70 , 90 , 30);
-		nome.setBounds(170 , 70 , 200 , 30);
 		
-		numeroLabel.setBounds(100 , 110 , 90 , 30);
-		numero.setBounds(170 , 110 , 200 , 30);
+		janela.add(horarioPrograma);
+		horarioPrograma.setBounds(260 , 240 , 140 , 30);
 		
-		add.addActionListener(this);
-		menu.addActionListener(this);
+		
+		janela.add(descricaoPrograma);
+		descricaoPrograma.setBounds(260 , 305 , 140 , 30);
+		
+		
+		nomeProgramalabel.setBounds(260 , 80 , 140,30);
+		janela.add(nomeProgramalabel);
+		
+		dataProgramalabel.setBounds(260 , 145 , 140,30);
+		janela.add(dataProgramalabel);
+		
+		horarioProgramalabel.setBounds(260 , 210 , 140,30);
+		janela.add(horarioProgramalabel);
+		
+		descricaoProgramalabel.setBounds(260 , 275 , 140,30);
+		janela.add(descricaoProgramalabel);
+				
+		janela.add(voltar);
+		
+		voltar.addActionListener(this);
+		addPrograma.addActionListener(this);
 		salvar.addActionListener(this);
 		excluir.addActionListener(this);
+		
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if(src == menu) {
-			new TelaCrud(d);
+		String valNomePrograma="";
+		String valHorarioPrograma="";
+		String valDataPrograma="";
+		String valDescricaoPrograma="";
+		String valNomeCanal="";
+		valNomePrograma = nomePrograma.getText();
+		valHorarioPrograma = horarioPrograma.getText();
+		valDataPrograma = dataPrograma.getText();
+		valDescricaoPrograma = descricaoPrograma.getText();
+		valNomeCanal = listaCanais.getSelectedValue();
+		ControleProgramas controleP = new ControleProgramas(dados);
+		if(src == voltar) {
+			new TelaCrud(dados);
+			janela.dispose();
+		}
+		int flag;
+		if(src == addPrograma || src == salvar) {
+//			//new TelaCrudPrograma(dados);
+			System.out.println(valNomePrograma+"\n"+valHorarioPrograma+"\n"+valDataPrograma+"\n"+valDescricaoPrograma);
+			if(valNomePrograma.isEmpty()|| valHorarioPrograma.isEmpty() ||valDataPrograma.isEmpty()|| valDescricaoPrograma.isEmpty()|| listaCanais.isSelectionEmpty()){
+				JOptionPane.showMessageDialog(null,  "Todos os dados sao obrigatorios!",
+						null, JOptionPane.ERROR_MESSAGE);	
+			}
+			else {
+				if(src == salvar) {
+					controleP.excluirPrograma(controleP.getAllListaProgramas()[p]);
+				}
+				flag=controleP.cadastrarPrograma(valNomeCanal,valNomePrograma,valHorarioPrograma,valDataPrograma, valDescricaoPrograma);
+				if(flag==3) {
+					JOptionPane.showMessageDialog(null,  "Este canal não existe",
+							null, JOptionPane.ERROR_MESSAGE);
+				}
+				else if(flag==2) {
+					JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
+								JOptionPane.INFORMATION_MESSAGE);
+					new TelaCrud(dados);
+					janela.dispose();
+				}
+				else if(flag==1) {
+					JOptionPane.showMessageDialog(null,  "Nome igual",
+							null, JOptionPane.ERROR_MESSAGE);
+				}
+				else if(flag==4) {
+					JOptionPane.showMessageDialog(null,  "Este canal não existe",
+							null, JOptionPane.ERROR_MESSAGE);
+				}
+			}	
+		}
+		if(src == excluir) {
+			controleP.excluirPrograma(valNomePrograma);
+			new TelaCrud(dados);
 			janela.dispose();
 		}
 	}
+	
+	public void valueChanged(ListSelectionEvent e) {
+//		Object src = e.getSource();
+		
+		
+	}
+
+	
 }

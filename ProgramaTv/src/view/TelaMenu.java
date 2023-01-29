@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import controle.*;
+import control.*;
 //import javax.swing.event.*
 public class TelaMenu implements ActionListener{
 	private JFrame janela = new JFrame("Programação de TV");

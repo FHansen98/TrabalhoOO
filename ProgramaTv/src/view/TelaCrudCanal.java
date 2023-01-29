@@ -5,8 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-
-import controle.*;
+import control.*;
 
 public class TelaCrudCanal implements ActionListener{
 	private ControleDados dados;

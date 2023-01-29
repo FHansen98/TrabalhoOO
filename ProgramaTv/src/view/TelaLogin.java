@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import controle.*;
+import control.*;
 
 //import javax.swing.event.*
 public class TelaLogin implements ActionListener{
@@ -17,7 +17,7 @@ public class TelaLogin implements ActionListener{
 	private JCheckBox master, premium;
 	private JLabel  emailLabel , senhaLabel;
 	private JTextField email , senha;
-	JButton enviar;
+	private JButton enviar;
 	
 	
 	public TelaLogin(ControleDados d) {
@@ -99,7 +99,6 @@ public class TelaLogin implements ActionListener{
 
 		
 		if (src == enviar) {
-			System.out.println("Detectou o evento!");
 			if(premium.isSelected()) {
 				if(u.login(valoremail,valorsenha)==-1 && valoremail.isEmpty()!=true && valorsenha.isEmpty()!=true) {
 					JOptionPane.showMessageDialog(null,  "email ou senha invalidos !",
@@ -131,6 +130,10 @@ public class TelaLogin implements ActionListener{
 					janela.dispose();
 					
 				}				
+			}
+			else {
+				JOptionPane.showMessageDialog(null,  "Todos os dados sao obrigatorios!",
+						null, JOptionPane.ERROR_MESSAGE);	
 			}
 			
 			email.setText(valoremail);

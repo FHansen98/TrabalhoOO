@@ -1,6 +1,6 @@
 package view;
 
-import controle.*;
+import control.*;
 
 public class TelaIniciar {
 	private static ControleDados dados = new ControleDados();

@@ -1,4 +1,4 @@
-package modelo;
+package model;
 
 public class Programa {
 	private String nome;

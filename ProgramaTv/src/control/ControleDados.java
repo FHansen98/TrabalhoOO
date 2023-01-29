@@ -1,8 +1,9 @@
-package controle;
+package control;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-import modelo.*;
+
+import model.*;
 
 
 public class ControleDados {

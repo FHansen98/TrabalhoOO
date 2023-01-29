@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-import controle.*;
+import control.*;
 
 public class TelaCrud implements ActionListener, ListSelectionListener {
 	
@@ -58,6 +58,7 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 		addCanal.addActionListener(this);
 		addPrograma.addActionListener(this);
 		listaCanais.addListSelectionListener(this);
+		listaProgramas.addListSelectionListener(this);
 	}
 	
 //	public static void main(String[] args) {
@@ -84,9 +85,12 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 	
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
-		
 		if(e.getValueIsAdjusting() && src == listaCanais) {
 			new TelaCrudCanal(dados, listaCanais.getSelectedIndex());
+			janela.dispose();
+		}
+		if(e.getValueIsAdjusting() && src == listaProgramas) {	
+			new TelaCrudPrograma(dados, listaProgramas.getSelectedIndex());
 			janela.dispose();
 		}
 	}
