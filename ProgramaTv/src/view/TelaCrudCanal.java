@@ -66,6 +66,7 @@ public class TelaCrudCanal implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		ControleCanais controleC = new ControleCanais(dados);
 		Object src = e.getSource();
 		String valorNome = nome.getText();
 		String valorNumero = numero.getText();
@@ -87,7 +88,7 @@ public class TelaCrudCanal implements ActionListener{
 					dadosCanal[1] =  valorNome;
 					dadosCanal[2] =  valorNumero;
 					
-					sucesso = dados.cadastrarCanal(dadosCanal);
+					sucesso = controleC.cadastrarCanal(dadosCanal);
 	
 					if(sucesso) {
 						mensagemSucessoCadastro();
@@ -102,7 +103,7 @@ public class TelaCrudCanal implements ActionListener{
 			}
 		}
 		if(src == excluir) {
-			dados.excluirCanal(p);
+			controleC.excluirCanal(p);
 			new TelaCrud(dados);
 			janela.dispose();
 		}

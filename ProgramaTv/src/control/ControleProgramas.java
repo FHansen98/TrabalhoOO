@@ -34,14 +34,12 @@ public class ControleProgramas {
 		}
 		return detalhesprogramasOnAir;
 	}
-//	tava no controle canais
 	public ArrayList<Programa> getAllInfosListaProgramas() {
 		int sizeArray = 0;
 		ArrayList<Programa> listaProgramas = new ArrayList<>();
 		for(int j =0; j<canais.size(); j++) {
 			sizeArray = sizeArray + canais.get(j).getListaProgramas().size();
 		}
-//		listaProgramas = new String[sizeArray]; //tamanho 3
 		int index = 0;
 		for(int j =0; j<canais.size(); j++) {
 			for(int i = 0; i<canais.get(j).getListaProgramas().size(); i++) {
@@ -65,7 +63,6 @@ public class ControleProgramas {
 				index ++;
 			}
 		}
-		System.out.println(listaProgramas);
 		return listaProgramas;
 	}
 	
@@ -106,6 +103,19 @@ public class ControleProgramas {
 		tam[1]=-2;
 		return tam;
 	}
+	public ArrayList<Programa> getBuscaDatasPrograma(String data) {
+//		// recebe a data do programa a ser buscado
+//		// retorna a lista de programas
+		ArrayList<Programa> programasData = new ArrayList<>();
+		for(var canal:canais) {
+			for(var programa:canal.getListaProgramas()) {
+				if(programa.getData().equals(data)){
+					programasData.add(programa);
+				}
+			}
+		}
+		return programasData;
+	}
 	public String[] getNomeListaProgramasFavoritos(int id, int index) {
 		String canalFavorito;
 		String[] programasFavoritos = {};
@@ -117,6 +127,25 @@ public class ControleProgramas {
 					if(canal.getNome().equals(canalFavorito)){
 						for(int x = 0; x<canal.getListaProgramas().size(); x++) {
 							programasFavoritos[x] = (""+canal.getListaProgramas().get(x).getNome());
+						}
+						return programasFavoritos;
+					}
+				}
+			}
+		}
+		return programasFavoritos;
+	}
+	public String[] getListaProgramasFavoritos(int id, int index) {
+		String canalFavorito;
+		String[] programasFavoritos = {};
+		for(var usuario:listaUsuarioP) {
+			if(usuario.getId() == id) {
+				canalFavorito = usuario.getListaCanaisFavoritos().get(index).getNome();
+				for(var canal:usuario.getListaCanaisFavoritos()) {
+					programasFavoritos = new String[canal.getListaProgramas().size()];
+					if(canal.getNome().equals(canalFavorito)){
+						for(int x = 0; x<canal.getListaProgramas().size(); x++) {
+							programasFavoritos[x] = (""+canal.getListaProgramas().get(x));
 						}
 						return programasFavoritos;
 					}

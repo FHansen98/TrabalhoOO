@@ -60,11 +60,7 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 		listaCanais.addListSelectionListener(this);
 		listaProgramas.addListSelectionListener(this);
 	}
-	
-//	public static void main(String[] args) {
-//		new TelaCrud(d);
-//	}
-	
+		
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

@@ -14,16 +14,6 @@ public class ControleDados {
 		d.cadastrosProntos();
 	}
 	
-	public boolean cadastrarCanal(String[] dados) {
-		Canal channel = new Canal(dados[1], Integer.parseInt(dados[2]), new ArrayList<>());
-		d.cadastrarCanal(channel, Integer.parseInt(dados[0]), d);
-		return true;
-	}
-	
-	public void excluirCanal(int posicao) {
-		d.getCanais().remove(posicao);
-	}
-	
 	public List<Canal> getCanais() {
 		return this.d.getCanais();
 	}

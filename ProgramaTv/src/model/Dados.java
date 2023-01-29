@@ -20,9 +20,9 @@ public class Dados {
 		Programa filme =  new Programa("Harry Potter", "11/12/2022", "22:00", "bruxos contra viloes");
 		Programa novela =  new Programa("Avenida Brasil", "11/12/2022", "21:00", "Carminha x Nina");
 		Programa bbb =  new Programa("BBB", "11/12/2022", "22:00", "reality");
-		Programa got =  new Programa("Game of Thrones", "11/12/2022", "23:00", "dragoes e Casas");
+		Programa got =  new Programa("Game of Thrones", "26/12/2022", "23:00", "dragoes e Casas");
 		Programa filme2 =  new Programa("Senhor dos Aneis", "11/12/2022", "20:00", "filme ficçao cientifica");
-		Programa globonews =  new Programa("Globo News", "11/12/2022", "21:00", "noticias de hoje");
+		Programa globonews =  new Programa("Globo News", "26/12/2022", "21:00", "noticias de hoje");
 		Programa padrinhosMagicos =  new Programa("Padrinhos Magicos", "26/12/2022", "19:00", "timmy perde seus padrinhos");
 		Programa ben =  new Programa("Ben 10", "12/12/2022", "22:00", "ben 10 vs vilgaguis");
 		Programa cloneWars =  new Programa("Clone Wars", "16/12/2022", "23:00", "A volta do Darth Maul");
@@ -57,17 +57,7 @@ public class Dados {
 		nick.getListaProgramas().add(padrinhosMagicos);
 		cartoom.getListaProgramas().add(ben);
 		disney.getListaProgramas().add(cloneWars);
-		
-//		programas.add(filme);
-//		programas.add(novela);
-//		programas.add(filme2);
-//		programas.add(globonews);
-//		
-//		programas.add(padrinhosMagicos );
-//		programas.add(ben);
-//		programas.add(cloneWars);
-		
-		
+			
 		listaUsuarioP.add(premium1);
 		listaUsuarioP.add(premium2);
 		listaUsuarioP.add(premium3);
@@ -76,40 +66,15 @@ public class Dados {
 		
 		programasOnAir.add(globonews);
 		programasOnAir.add(filme2);
+		programasOnAir.add(ben);
 
 		premium1.getListaCanaisFavoritos().add(telecine);
 		premium1.getListaCanaisFavoritos().add(disney);
 		premium2.getListaCanaisFavoritos().add(globo);
 		premium2.getListaCanaisFavoritos().add(telecine);
-		System.out.println(premium1);
-		System.out.println(premium2);
-//		premium1.getListaProgramaOnAir().add(globonews);
-//		premium1.getListaProgramaOnAir().add(novela);
-//		premium1.getListaCanal().add(globo);
-//		premium1.getListaCanal().add(telecine);
-		
-//		master.getListaCanal().add(globo);
-//		master.getListaCanal().add(telecine);
-//		master.getListaProgramaOnAir().add(globonews);
-//		master.getListaProgramaOnAir().add(novela);
-		
-		
-//		System.out.println(globo);
-//		System.out.println(telecine);
 //		System.out.println(premium1);
-//		System.out.println(master);
-		this.master = master;
-	
-	}
-	
-	public void cadastrarCanal(Canal canal, int posicao, Dados d) {
-		if(posicao < 0) {
-			this.canais.add(canal);
-			this.master.getListaCanal().add(canal);
-		}else {
-			this.canais.set(posicao, canal);
-			this.master.getListaCanal().set(posicao,canal);
-		}
+//		System.out.println(premium2);
+
 	}
 
 	public List<Canal> getCanais() {
@@ -135,7 +100,7 @@ public class Dados {
 	public void setListaUsuarioP(List<UsuarioPremium> listaUsuarioP) {
 		this.listaUsuarioP = listaUsuarioP;
 	}
-	
+
 	public List<UsuarioMaster> getListaUsuarioM() {
 		return listaUsuarioM;
 	}
@@ -148,8 +113,48 @@ public class Dados {
 		return programasOnAir;
 	}
 
-	public void setProgramaOnAir(List<Programa> programasOnAir) {
+	public void setProgramasOnAir(List<Programa> programasOnAir) {
 		this.programasOnAir = programasOnAir;
+	}
+
+	public UsuarioMaster getMaster() {
+		return master;
+	}
+
+	public void setMaster(UsuarioMaster master) {
+		this.master = master;
+	}
+
+	public UsuarioPremium getPremium1() {
+		return premium1;
+	}
+
+	public void setPremium1(UsuarioPremium premium1) {
+		this.premium1 = premium1;
+	}
+
+	public UsuarioPremium getPremium2() {
+		return premium2;
+	}
+
+	public void setPremium2(UsuarioPremium premium2) {
+		this.premium2 = premium2;
+	}
+
+	public UsuarioPremium getPremium3() {
+		return premium3;
+	}
+
+	public void setPremium3(UsuarioPremium premium3) {
+		this.premium3 = premium3;
+	}
+
+	public UsuarioPremium getPremium4() {
+		return premium4;
+	}
+
+	public void setPremium4(UsuarioPremium premium4) {
+		this.premium4 = premium4;
 	}
 	
 }

@@ -52,9 +52,10 @@ public class TestesUnitarios {
 		dadosCanal3[1] =  "Fox";
 		dadosCanal3[2] =  "56";
 		ControleDados d = new ControleDados();
-		assertTrue(d.cadastrarCanal(dadosCanal1));
-		assertTrue(d.cadastrarCanal(dadosCanal2));
-		assertTrue(d.cadastrarCanal(dadosCanal3));
+		ControleCanais controleCanais = new ControleCanais(d);
+		assertTrue(controleCanais.cadastrarCanal(dadosCanal1));
+		assertTrue(controleCanais.cadastrarCanal(dadosCanal2));
+		assertTrue(controleCanais.cadastrarCanal(dadosCanal3));
 	}
 	@Test
 	void testCadastarPrograma(){

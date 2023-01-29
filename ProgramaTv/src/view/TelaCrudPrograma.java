@@ -73,30 +73,30 @@ public class TelaCrudPrograma implements ActionListener {
 		listaCanais.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		janela.add(listaCanais);
 		janela.add(nomePrograma);
-		nomePrograma.setBounds(260 , 110 , 140 , 30);
+		nomePrograma.setBounds(260 , 110 , 200 , 30);
 		
 		janela.add(dataPrograma);
-		dataPrograma.setBounds(260 , 175 , 140 , 30);
+		dataPrograma.setBounds(260 , 175 , 200 , 30);
 		
 		
 		janela.add(horarioPrograma);
-		horarioPrograma.setBounds(260 , 240 , 140 , 30);
+		horarioPrograma.setBounds(260 , 240 , 200 , 30);
 		
 		
 		janela.add(descricaoPrograma);
-		descricaoPrograma.setBounds(260 , 305 , 140 , 30);
+		descricaoPrograma.setBounds(260 , 305 , 200 , 30);
 		
 		
-		nomeProgramalabel.setBounds(260 , 80 , 140,30);
+		nomeProgramalabel.setBounds(260 , 80 , 200 , 30);
 		janela.add(nomeProgramalabel);
 		
-		dataProgramalabel.setBounds(260 , 145 , 140,30);
+		dataProgramalabel.setBounds(260 , 145 , 200 , 30);
 		janela.add(dataProgramalabel);
 		
-		horarioProgramalabel.setBounds(260 , 210 , 140,30);
+		horarioProgramalabel.setBounds(260 , 210 , 200 , 30);
 		janela.add(horarioProgramalabel);
 		
-		descricaoProgramalabel.setBounds(260 , 275 , 140,30);
+		descricaoProgramalabel.setBounds(260 , 275 , 200 , 30);
 		janela.add(descricaoProgramalabel);
 				
 		janela.add(voltar);
