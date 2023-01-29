@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * Esta classe vai agregar objetos e possui nome, data , horario e descrição
+ * @author Arthur Felipe 
+ *
+ */
 public class Programa {
 	private String nome;
 	private String data;

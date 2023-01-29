@@ -1,6 +1,10 @@
 package model;
 import java.util.ArrayList;
-
+/**
+ * Esta classe é abstrata Usuario define o modelo que os UsuariosPremium e UsuarioMaster devem ser seguidos
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public abstract class Usuario {
 	protected ArrayList<Programa> listaProgramaOnAir;
 	protected ArrayList<Canal> listaCanal;
@@ -38,8 +42,5 @@ public abstract class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-
 	
 }

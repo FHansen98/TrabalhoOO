@@ -7,6 +7,11 @@ import javax.swing.event.*;
 
 import control.*;
 
+/**
+ * A classe TelaDetalhes cria a interface gráfica para apresentar os atributos do programa específico
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaDetalhes implements ActionListener{
 	private ControleDados dados;
 	private JFrame janela = new JFrame("Canais de TV");
@@ -35,6 +40,10 @@ public class TelaDetalhes implements ActionListener{
 		
 		voltar.addActionListener(this);
 	}
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  voltar leva para a TelaMenu
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == voltar) {

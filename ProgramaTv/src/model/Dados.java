@@ -1,7 +1,11 @@
 package model;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Esta classe possui todos os dados dos canais, programas e usuarios iniciais 
+ * @author Arthur e Felipe
+ *
+ */
 public class Dados {
 	
 	private List<Canal> canais = new ArrayList<Canal>();

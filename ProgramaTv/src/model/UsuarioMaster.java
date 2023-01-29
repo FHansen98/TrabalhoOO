@@ -1,6 +1,10 @@
 package model;
 import java.util.ArrayList;
-
+/**
+ * Esta classe herda de Usuario e vai agregar objetos possuindo um booleam master 
+ * @author Arthur e Felipe
+ *
+ */
 public class UsuarioMaster extends Usuario {
 	private boolean master;
 

@@ -7,6 +7,11 @@ import javax.swing.event.*;
 
 import control.*;
 
+/**
+ * A classe TelaCrudProgramas cria a interface gráfica da para fazer o crud de um programa
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaCrudPrograma implements ActionListener {
 	private JFrame janela = new JFrame("CRUD");
 	private JLabel tituloCanais = new JLabel("Canais");
@@ -107,7 +112,13 @@ public class TelaCrudPrograma implements ActionListener {
 		excluir.addActionListener(this);
 		
 	}
-
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  menu leva para pagina TelaCrud
+	 *  add adiciona um novo programa e leva de volta para TelaCrud
+	 *  salvar edita um programa e leva de volta para TelaCrud
+	 *  excluir exclui um programa e leva de volta para TelaCrud
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		String valNomePrograma="";
@@ -164,8 +175,6 @@ public class TelaCrudPrograma implements ActionListener {
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {
-//		Object src = e.getSource();
-		
 		
 	}
 

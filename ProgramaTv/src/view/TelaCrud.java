@@ -7,6 +7,12 @@ import javax.swing.event.*;
 
 import control.*;
 
+/**
+ * A classe TelaCrud cria a interface gráfica do menu do UsuarioMaster para listagem dos canais e programas
+ * e definicao dos cruds
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaCrud implements ActionListener, ListSelectionListener {
 	
 	private JFrame janela = new JFrame("CRUD");
@@ -61,7 +67,12 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 		listaProgramas.addListSelectionListener(this);
 	}
 		
-
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  sair leva para pagina TelaLogin
+	 *  addCanal leva para a pagina TelaCrudCanal
+	 *  addPrograma leva para a pagina TelaCrudPrograma
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -78,7 +89,10 @@ public class TelaCrud implements ActionListener, ListSelectionListener {
 			janela.dispose();
 		}
 	}
-	
+	/**
+	 *  O método valueChanged define os eventos a serem realizados pela classe
+	 *  o item clicado leva para pagina TelaCrudProgramas ou TelaCrudCanasi de acordo com o canal ou programa clicado
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 		if(e.getValueIsAdjusting() && src == listaCanais) {

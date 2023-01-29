@@ -6,7 +6,11 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import control.*;
-
+/**
+ * A classe TelaCrudCanal cria a interface gráfica da para fazer o crud de um canal
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaCrudCanal implements ActionListener{
 	private ControleDados dados;
 	private JFrame janela = new JFrame("Programação televisão");
@@ -64,7 +68,13 @@ public class TelaCrudCanal implements ActionListener{
 		salvar.addActionListener(this);
 		excluir.addActionListener(this);
 	}
-	
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  menu leva para pagina TelaCrud
+	 *  add adiciona um novo canal e leva de volta para TelaCrud
+	 *  salvar edita um canal e leva de volta para TelaCrud
+	 *  excluir exclui um canal e leva de volta para TelaCrud
+	 */
 	public void actionPerformed(ActionEvent e) {
 		ControleCanais controleC = new ControleCanais(dados);
 		Object src = e.getSource();
@@ -109,12 +119,18 @@ public class TelaCrudCanal implements ActionListener{
 		}
 		
 	}
+	/**
+	 * O método mensagemSucessoCadastro gera um aviso se o cadastro foi feito com sucesso
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		new TelaCrud(dados);
 		janela.dispose();
 	}
+	/**
+	 * O método mensagemErroCadastro gera um aviso se o cadastro deu erro
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"

@@ -8,8 +8,11 @@ import java.util.List;
 import javax.swing.*;
 
 import control.*;
-
-//import javax.swing.event.*
+/**
+ * A classe TelaLogin cria a interface gráfica para fazer login no programa
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaLogin implements ActionListener{
 	private ControleDados dados;
 	private JFrame janela = new JFrame("Programação televisão");
@@ -54,15 +57,6 @@ public class TelaLogin implements ActionListener{
 		master.setBounds(140 , 160 , 100 , 20);
 		premium.setBounds(250 , 160 , 100 , 20);
 		
-		/*emailLabel . setBounds (10 , 50 , 150 , 30);
-		email. setBounds (150 , 50 , 330 , 30);
-		senhaLabel . setBounds (10 , 80 , 150 , 30);
-		senha . setBounds (150 , 80 , 125 , 30);
-		idLabel . setBounds (10 , 110 , 150 , 30);*/
-		//setbound(posição do bloco x,posição bloco y,tamanho do bloco x,)
-		
-		//setbound(posição do bloco x,posição bloco y,tamanho do bloco x,)
-		//id . setBounds (150 , 100 , 125 , 30);
 		ButtonGroup group = new ButtonGroup();
 		group.add(master);
 		group.add(premium);
@@ -81,12 +75,10 @@ public class TelaLogin implements ActionListener{
 		janela.setVisible(true);
 		enviar.addActionListener( this );
 	}
-//	public static void main(String[] args) {
-//		new TelaLogin();
-//	}
-	
-	
-	
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  enviar faz login em Premium ou Master e verifica os campos
+	 */
 	public void actionPerformed(ActionEvent e) {
 		ControleUsuario u = new ControleUsuario(dados);
 		Object src = e.getSource();
@@ -94,9 +86,6 @@ public class TelaLogin implements ActionListener{
 		String valorsenha=null;
 		valoremail = email.getText();
 		valorsenha = senha.getText();
-		// tava tentando colocar apenas uma das opçoes corretas
-		
-
 		
 		if (src == enviar) {
 			if(premium.isSelected()) {

@@ -9,7 +9,12 @@ import javax.swing.event.*;
 
 import control.*;
 import model.Programa;
-
+/**
+ * A classe Tela Programas cria a interface gráfica para listar os programas de um canal especifico,
+ * ou programas on air, ou programas de uma data especifica
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 
 public class TelaProgramas implements ActionListener, ListSelectionListener {
 	private ControleDados dados;
@@ -132,7 +137,12 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 		menu.addActionListener(this);
 		listaProgramas.addListSelectionListener(this);
 	}
-	
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  voltar leva para pagina TelaMenu ou TelaCanais dependendo do caminho percorrido no programa
+	 *  menu leva pra TelaMenu
+	 *  busca faz a busca dos programas de acordo com o nome ou data
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		String valorbuscaprograma = buscaprograma.getText();
@@ -196,8 +206,10 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 			}
 		}
 	}
-	
-	
+	/**
+	 *  O método valueChanged define os eventos a serem realizados pela classe
+	 *  o item clicado leva para pagina TelaDetalhes de acordo com o programa clicado
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 		ControleProgramas controleP = new ControleProgramas(dados);

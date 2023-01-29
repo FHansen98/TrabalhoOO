@@ -8,7 +8,10 @@ import javax.swing.event.*;
 import control.*;
 
 
-//import control.ControleHorarios;
+/**
+ * A classe TelaCanais cria a interface gráfica para listar todos os canais ou listar os canais favoritos
+ * @author Felipe Hansen Arthur Campelo
+ */
 
 public class TelaCanais implements ActionListener, ListSelectionListener{
 	private ControleDados dados;
@@ -56,7 +59,10 @@ public class TelaCanais implements ActionListener, ListSelectionListener{
 		voltar.addActionListener(this);
 		listaCanais.addListSelectionListener(this);
 	}
-
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  voltar leva para pagina TelaMenu
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == voltar) {
@@ -64,6 +70,10 @@ public class TelaCanais implements ActionListener, ListSelectionListener{
 			janela.dispose();
 		}
 	}
+	/**
+	 *  O método valueChanged define os eventos a serem realizados pela classe
+	 *  o item clicado leva para pagina TelaProgramas de acordo com o canal clicado
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 

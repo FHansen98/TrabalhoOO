@@ -4,7 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import control.*;
-//import javax.swing.event.*
+
+/**
+ * A classe TelaMenu cria a interface gráfica do menu do programa para os UsuarioPremium
+ * @author Felipe Hansen Arthur Campelo
+ *
+ */
 public class TelaMenu implements ActionListener{
 	private JFrame janela = new JFrame("Programação de TV");
 	private JLabel titulo = new JLabel("Menu Principal");
@@ -44,7 +49,14 @@ public class TelaMenu implements ActionListener{
 		favoritos.addActionListener(this);
 		programas.addActionListener(this);
 	}
-
+	
+	/**
+	 *  O método actionPerformed define os eventos a serem realizados pela classe
+	 *  canais leva para pagina de TelaCanais
+	 *  programas leva para pagina de TelaProgramas
+	 *  favoritos leva para pagina DE TelaCanais com os canais favoritos
+	 *  sair leva para pagina de TelaLogin
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == canais) {

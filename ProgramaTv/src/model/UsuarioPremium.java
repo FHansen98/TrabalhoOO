@@ -1,6 +1,10 @@
 package model;
 import java.util.ArrayList;
-
+/**
+ * Esta classe herda de Usuario e vai agregar obejtos possuindo uma lista canais favoritos um nome
+ * @author Arthur Felipe
+ *
+ */
 public class UsuarioPremium extends Usuario{
 	private ArrayList<Canal> listaCanaisFavoritos;
 	private String nome;
