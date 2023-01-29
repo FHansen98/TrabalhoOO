@@ -9,7 +9,7 @@ public class TelaMenu implements ActionListener{
 	private JFrame janela = new JFrame("Programação de TV");
 	private JLabel titulo = new JLabel("Menu Principal");
 	private JButton canais = new JButton("Canais");
-	private JButton programas = new JButton("Programas On Air");
+	private JButton programas = new JButton("Programas");
 	private JButton favoritos = new JButton("Canais Favoritos");
 	private JButton sair = new JButton("Sair");
 	private ControleDados dados;

@@ -18,7 +18,7 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Lista de Programas");
 	private JLabel onAir = new JLabel("Programas On Air");
 	private JLabel programaData;
-	private JLabel buscalabel = new JLabel("Buscar Programa"); // titulo
+	private JLabel buscalabel; // titulo
 	private JButton voltar = new JButton("Voltar");
 	private JButton menu = new JButton("Menu");
 	private JButton busca = new JButton("Buscar"); // botão
@@ -39,17 +39,27 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 		
 		data = new JCheckBox("Data");
 		nome = new JCheckBox("Nome");
-		JLabel descricao = new JLabel(d.getCanais().get(p).toString());
 		buscaprograma = new JTextField(null);
 		
 		if(page == "canais") {
+			JLabel descricao = new JLabel(d.getCanais().get(p).toString());
 			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramas(p));
+			buscalabel = new JLabel("Buscar Programa por data");
 			janela.add(voltar);
 			janela.add(descricao);
+			janela.add(busca);
+			janela.add(buscalabel);
+			janela.add(buscaprograma);
+			buscalabel.setBounds(270, 150, 200, 20);
+			descricao.setBounds(260, 20, 220, 120);
 		}else if(page == "favoritos"){
+			JLabel descricao = new JLabel(d.getCanais().get(p).toString());
+			janela.add(descricao);
+			descricao.setBounds(260, 20, 220, 120);
 			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramasFavoritos(id, p));
 			janela.add(voltar);
 		}else if(page == "onAir"){
+			buscalabel = new JLabel("Buscar Programa");
 			listaProgramas = new JList<String>(new ControleProgramas(d).getNomeListaProgramasOnAir());
 			janela.add(onAir);
 			janela.add(menu);
@@ -58,29 +68,40 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 			janela.add(buscaprograma);
 			janela.add(data);
 			janela.add(nome);
+			buscalabel.setBounds(275, 150, 150, 20);
 		}else{
 			programaData = new JLabel("Programas: " + page);
-			listaProgramaData = controleP.getBuscaDatasPrograma(pagina);
-			String[] listaCanaisData = new String[listaProgramaData.size()];
-			for(int i = 0; i<listaProgramaData.size(); i++) {
-				listaCanaisData[i] = (""+listaProgramaData.get(i).getNome());
+			if(posicao<0) {
+				listaProgramaData = controleP.getBuscaDatasPrograma(pagina);
+				String[] listaCanaisData = new String[listaProgramaData.size()];
+				for(int i = 0; i<listaProgramaData.size(); i++) {
+					listaCanaisData[i] = (""+listaProgramaData.get(i).getNome());
+				}
+				listaProgramas = new JList<String>(listaCanaisData);
+			}else {
+				listaProgramaData = controleP.getBuscaDatasProgramaCanal(posicao, pagina);
+				String[] listaCanaisData = new String[listaProgramaData.size()];
+				for(int i = 0; i<listaProgramaData.size(); i++) {
+					listaCanaisData[i] = (""+listaProgramaData.get(i).getNome());
+				}
+				JLabel descricao = new JLabel(d.getCanais().get(p).toString());
+				descricao.setBounds(260, 20, 220, 120);
+				listaProgramas = new JList<String>(listaCanaisData);
+				janela.add(descricao);
 			}
-			listaProgramas = new JList<String>(listaCanaisData);
 			janela.add(voltar);
 			janela.add(programaData);
 			programaData.setFont(new Font("Arial", Font.BOLD, 17));
-			programaData.setBounds(260, 50, 250, 70);
+			programaData.setBounds(260, 70, 250, 70);
 			page = "programasData";
 		}
-		descricao.setBounds(260, 20, 220, 120);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(145, 10, 250, 30);
 		onAir.setFont(new Font("Arial", Font.BOLD, 17));
 		onAir.setBounds(275, 50, 250, 70);
-		voltar.setBounds(300, 220, 120, 30);
+		voltar.setBounds(300, 270, 120, 30);
 		menu.setBounds(300, 290, 120, 25);
 		busca.setBounds(310, 240, 100, 20);
-		buscalabel.setBounds(275, 150, 150, 20);
 		
 		data.setBounds(290 , 210 , 75 , 20);
 		nome.setBounds(370 , 210 , 75 , 20);
@@ -117,8 +138,13 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 		String valorbuscaprograma = buscaprograma.getText();
 		if(src == voltar) {
 			if(page == "programasData") {
-				new TelaProgramas(id, dados, 0, "onAir");
-				janela.dispose();
+				if(p<0) {
+					new TelaProgramas(id, dados, 0, "onAir");
+					janela.dispose();
+				}else {
+					new TelaProgramas(id, dados, p, "canais");
+					janela.dispose();
+				}
 			}else {
 				new TelaCanais(id, dados, page);
 				janela.dispose();
@@ -129,22 +155,11 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 			janela.dispose();
 		}
 		if(src == busca) {
-			if(nome.isSelected()) {
-				int[] tam = new int[3];
-				tam = controleP.getBuscaPrograma(valorbuscaprograma);
-				if(tam[0]>=0) {
-					new TelaDetalhes(id, dados, controleP.getListaProgramas(tam[0]), tam[1]);
-					janela.dispose();
-				}
-				else  {
-					JOptionPane.showMessageDialog(null,  "Programa não encontrado!",
-							null, JOptionPane.ERROR_MESSAGE);
-				}
-			}else if(data.isSelected()) {
+			if(page == "canais") {
 				ArrayList<Programa> listaProgramaData = new ArrayList<>();
-				listaProgramaData = controleP.getBuscaDatasPrograma(valorbuscaprograma);
+				listaProgramaData = controleP.getBuscaDatasProgramaCanal(p, valorbuscaprograma);
 				if(listaProgramaData.size()>0) {
-					new TelaProgramas(id, dados, 0, valorbuscaprograma);
+					new TelaProgramas(id, dados, p, valorbuscaprograma);
 					janela.dispose();
 				}
 				else  {
@@ -152,8 +167,32 @@ public class TelaProgramas implements ActionListener, ListSelectionListener {
 							null, JOptionPane.ERROR_MESSAGE);
 				}
 			}else {
-				JOptionPane.showMessageDialog(null,  "Todos os dados sao obrigatorios!",
-						null, JOptionPane.ERROR_MESSAGE);	
+				if(nome.isSelected()) {
+					int[] tam = new int[3];
+					tam = controleP.getBuscaPrograma(valorbuscaprograma);
+					if(tam[0]>=0) {
+						new TelaDetalhes(id, dados, controleP.getListaProgramas(tam[0]), tam[1]);
+						janela.dispose();
+					}
+					else  {
+						JOptionPane.showMessageDialog(null,  "Programa não encontrado!",
+								null, JOptionPane.ERROR_MESSAGE);
+					}
+				}else if(data.isSelected()) {
+					ArrayList<Programa> listaProgramaData = new ArrayList<>();
+					listaProgramaData = controleP.getBuscaDatasPrograma(valorbuscaprograma);
+					if(listaProgramaData.size()>0) {
+						new TelaProgramas(id, dados, -1, valorbuscaprograma);
+						janela.dispose();
+					}
+					else  {
+						JOptionPane.showMessageDialog(null,  "Programas não encontrados nesta data!",
+								null, JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,  "Todos os dados sao obrigatorios!",
+							null, JOptionPane.ERROR_MESSAGE);	
+				}
 			}
 		}
 	}

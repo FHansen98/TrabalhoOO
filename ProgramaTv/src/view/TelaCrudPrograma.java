@@ -137,7 +137,7 @@ public class TelaCrudPrograma implements ActionListener {
 				if(src == salvar) {
 					controleP.excluirPrograma(controleP.getAllListaProgramas()[p]);
 				}
-				flag=controleP.cadastrarPrograma(valNomeCanal,valNomePrograma,valHorarioPrograma,valDataPrograma, valDescricaoPrograma);
+				flag=controleP.cadastrarPrograma(valNomeCanal, valNomePrograma, valDataPrograma, valHorarioPrograma, valDescricaoPrograma);
 				if(flag==3) {
 					JOptionPane.showMessageDialog(null,  "Este canal não existe",
 							null, JOptionPane.ERROR_MESSAGE);

@@ -83,8 +83,8 @@ public class ControleProgramas {
 	}
 	
 	public int[] getBuscaPrograma(String programa) {
-//		// recebe o nome do programa a ser buscado
-//		// retorna a descrição desse programa 
+		// recebe o nome do programa a ser buscado
+		// retorna a descrição desse programa 
 		int sizeArray = 0;
 		int[] tam = new int[2]; // flag de posição
 		for(int j =0; j<canais.size(); j++) {
@@ -102,6 +102,17 @@ public class ControleProgramas {
 		tam[0]=-1;
 		tam[1]=-2;
 		return tam;
+	}
+	public ArrayList<Programa> getBuscaDatasProgramaCanal(int posicao, String data) {
+		// recebe a data do programa a ser buscado
+		// retorna a lista de programas
+		ArrayList<Programa> programasData = new ArrayList<>();
+		for(var programa:canais.get(posicao).getListaProgramas()) {
+			if(programa.getData().equals(data)){
+				programasData.add(programa);
+			}
+		}
+		return programasData;
 	}
 	public ArrayList<Programa> getBuscaDatasPrograma(String data) {
 //		// recebe a data do programa a ser buscado
