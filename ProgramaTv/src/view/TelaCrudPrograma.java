@@ -127,8 +127,6 @@ public class TelaCrudPrograma implements ActionListener {
 		}
 		int flag;
 		if(src == addPrograma || src == salvar) {
-//			//new TelaCrudPrograma(dados);
-			System.out.println(valNomePrograma+"\n"+valHorarioPrograma+"\n"+valDataPrograma+"\n"+valDescricaoPrograma);
 			if(valNomePrograma.isEmpty()|| valHorarioPrograma.isEmpty() ||valDataPrograma.isEmpty()|| valDescricaoPrograma.isEmpty()|| listaCanais.isSelectionEmpty()){
 				JOptionPane.showMessageDialog(null,  "Todos os dados sao obrigatorios!",
 						null, JOptionPane.ERROR_MESSAGE);	

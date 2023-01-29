@@ -40,11 +40,9 @@ public class ControleProgramas {
 		for(int j =0; j<canais.size(); j++) {
 			sizeArray = sizeArray + canais.get(j).getListaProgramas().size();
 		}
-		int index = 0;
 		for(int j =0; j<canais.size(); j++) {
 			for(int i = 0; i<canais.get(j).getListaProgramas().size(); i++) {
 				listaProgramas.add(canais.get(j).getListaProgramas().get(i));
-				index ++;
 			}
 		}
 		return listaProgramas;
