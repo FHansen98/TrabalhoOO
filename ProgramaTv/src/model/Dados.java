@@ -72,8 +72,6 @@ public class Dados {
 		premium1.getListaCanaisFavoritos().add(disney);
 		premium2.getListaCanaisFavoritos().add(globo);
 		premium2.getListaCanaisFavoritos().add(telecine);
-//		System.out.println(premium1);
-//		System.out.println(premium2);
 
 	}
 

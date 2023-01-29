@@ -18,24 +18,6 @@ public class UsuarioPremium extends Usuario{
 		this.listaCanal = listaCanal;
 	}
 
-	@Override
-	public String toString() {
-		String strFavCanais = "";
-		for (var i:listaCanaisFavoritos) {
-			strFavCanais += i.getNome() + " ";
-		}
-		String strOnAir = "";
-		for (var i:listaProgramaOnAir) {
-			strOnAir += i.getNome() + " ";
-		}
-		String strCanais = "";
-		for (var i:listaCanal) {
-			strCanais += i.getNome() + " ";
-		}
-		String str = "UsuarioPremium " + nome + ", listaCanaisFavoritos= " + strFavCanais + 
-				", email=" + email + ", id=" + id + ", senha=" + senha + ", listaProgramaOnAir= " + strOnAir + ", listaCanal= " + strCanais;
-		return str;
-	}
 
 	public ArrayList<Canal> getListaCanaisFavoritos() {
 		return listaCanaisFavoritos;
@@ -87,5 +69,23 @@ public class UsuarioPremium extends Usuario{
 	}
 	public void setListaCanal(ArrayList<Canal> listaCanal) {
 		this.listaCanal = listaCanal;
+	}
+	@Override
+	public String toString() {
+		String strFavCanais = "";
+		for (var i:listaCanaisFavoritos) {
+			strFavCanais += i.getNome() + " ";
+		}
+		String strOnAir = "";
+		for (var i:listaProgramaOnAir) {
+			strOnAir += i.getNome() + " ";
+		}
+		String strCanais = "";
+		for (var i:listaCanal) {
+			strCanais += i.getNome() + " ";
+		}
+		String str = "UsuarioPremium " + nome + ", listaCanaisFavoritos= " + strFavCanais + 
+				", email=" + email + ", id=" + id + ", senha=" + senha + ", listaProgramaOnAir= " + strOnAir + ", listaCanal= " + strCanais;
+		return str;
 	}
 }

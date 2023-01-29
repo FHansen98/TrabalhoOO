@@ -13,12 +13,6 @@ public class Canal {
 		this.listaProgramas = listaProgramas;
 	}
 		
-	@Override
-	public String toString() {
-		String str = "Canal: " + nome + " - Número: " + numero;
-		return str;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -41,6 +35,11 @@ public class Canal {
 	
 	public void setListaProgramas(ArrayList<Programa> listaProgramas) {
 		this.listaProgramas = listaProgramas;
+	}
+	@Override
+	public String toString() {
+		String str = "Canal: " + nome + " - Número: " + numero;
+		return str;
 	}
 
 }

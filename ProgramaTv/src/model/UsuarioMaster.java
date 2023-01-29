@@ -15,28 +15,9 @@ public class UsuarioMaster extends Usuario {
 		this.senha = senha;
 	}
 	
-
-	@Override
-	public String toString() {
-		String strOnAir = "";
-		for (var i:listaProgramaOnAir) {
-			strOnAir += i.getNome() + " ";
-		}
-		String strCanais = "";
-		for (var i:listaCanal) {
-			strCanais += i.getNome() + " ";
-		}
-		return "UsuarioMaster [master=" + master + ", listaProgramaOnAir=" + strOnAir + ", listaCanal="
-		+ strCanais + ", email=" + email + ", id=" + id + ", senha=" + senha + "]";
-//		return "Master master=" + master  + ", listaProgramaOnAir= " + strOnAir + ", listaCanal= " + strCanais;
-	}
-	
-	public boolean isMaster() {
+	public boolean getMaster() {
 		return master;
 	}
-
-
-
 	public void setMaster(boolean master) {
 		this.master = master;
 	}
@@ -69,6 +50,19 @@ public class UsuarioMaster extends Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	@Override
+	public String toString() {
+		String strOnAir = "";
+		for (var i:listaProgramaOnAir) {
+			strOnAir += i.getNome() + " ";
+		}
+		String strCanais = "";
+		for (var i:listaCanal) {
+			strCanais += i.getNome() + " ";
+		}
+		return "UsuarioMaster master=" + master + ", listaProgramaOnAir=" + strOnAir + ", listaCanal="
+		+ strCanais + ", email=" + email + ", id=" + id + ", senha=" + senha + "";
 	}
 	
 }
